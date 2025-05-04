@@ -1,35 +1,23 @@
-% A right rotation on
-%       tree(K2,V2,
-%            tree(K1,V1, L, R),
-%            Right2)
-% yields
-%       tree(K1,V1,
-%            L,
-%            tree(K2,V2, R, Right2))
-rotateRight(
-    tree(K2, V2,
-         tree(K1, V1, Left, Right),
-         Right2),
-    tree(K1, V1,
-         Left,
-         tree(K2, V2, Right, Right2))
-).
+% Binary Search Tree Rotation
 
-% A left rotation on
-%       tree(K1,V1,
-%            Left1,
-%            tree(K2,V2, L, R))
-% yields
-%       tree(K2,V2,
-%            tree(K1,V1, Left1, L),
-%            R)
-rotateLeft(
-    tree(K1, V1,
-         Left1,
-         tree(K2, V2, L, R)
-    ),
-    tree(K2, V2,
-         tree(K1, V1, Left1, L),
-         R
-    )
-).
+% rotateRight(In, Out): right rotation at root
+rotateRight(tree(K2, V2, tree(K1, V1, L1, R1), R2),
+            tree(K1, V1, L1, tree(K2, V2, R1, R2))).
+
+% rotateLeft(In, Out): left rotation at root
+rotateLeft(tree(K1, V1, L1, tree(K2, V2, L2, R2)),
+           tree(K2, V2, tree(K1, V1, L1, L2), R2)).
+
+% Example test tree for rotateRight
+ltree(tree(3, c,
+           tree(2, b,
+                tree(1, a, empty, empty),
+                empty),
+           empty)).
+
+% Example test tree for rotateLeft
+rtree(tree(1, a,
+           empty,
+           tree(2, b,
+                empty,
+                tree(3, c, empty, empty)))).
